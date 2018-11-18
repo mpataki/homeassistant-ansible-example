@@ -48,9 +48,12 @@ $>  ansible-playbook -i inventory.yaml upgrade_ha.yaml
 
 It's worth reading the README in each role to get a better idea of each, but in general this playbook is for managing your pi (or whatever host you're running HA on). It doesn't configure your router's port forwarding for example, or go through the steps on the DuckDNS UI that are required via the web interface.
 
+This also doesn't write your configuration.yaml, or automation.yaml, etc, nor would you want it to :). This does mean, however, that you still need to enable things like MQTT and influxdb in your own configuration, so expect to still need to consult the HA docs on those subjects.
+
 ## So why use this?
 
 Declarative configuration management is an industry standard best practice -- and for good reason! Using tools like ansible makes these configurations more portable, subject to version control, and much less prone to human error (like oops I fell on my keyboard and deleted my HA configuration.yaml.. now what?).
 
 All of these roles are idempotent, meaning you can run them again and again and always arrive at the same known state. This is great for experimentation. You can easily try something wild and fun, and roll it back if it breaks. Further, if everything is managed through ansible, you could fry your pi's SD, pop in a new one, and be back up and running in minutes. Who doesn't like that?
 
+Further, each of these roles are meant to work with one another. So your letsencrypt certs will be used by nginx for encypting web traffic, and also by mosquitto for any publicly exposed MQTT traffic, for example.
