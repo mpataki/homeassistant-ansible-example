@@ -1,6 +1,6 @@
 # Example Ansible Based Home Assistant Setup
 
-This example project demonstrates how to use and combine the various ansible roles provided [here]() to produce a home assistant based home monitoring/automation hub with a number of features including:
+This example project demonstrates how to use and combine the various ansible roles provided [here](https://galaxy.ansible.com/mpataki) to produce a home assistant based home monitoring/automation hub with a number of features including:
 - Dynamic DNS via DuckDNS
 - HTTPS support via letsencrypt and nginx
 - Mosquitto MQTT broker (with SSL)
