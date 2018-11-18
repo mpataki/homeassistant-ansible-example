@@ -1,0 +1,7 @@
+---
+
+all:
+  hosts:
+    pi:
+      ansible_host: <your-home-assistant-host-address>
+      ansible_user: pi

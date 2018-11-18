@@ -1,0 +1,4 @@
+switch.enterence_light:
+  icon: mdi:lightbulb
+switch.outside_front:
+  icon: mdi:lightbulb

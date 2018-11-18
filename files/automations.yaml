@@ -1,0 +1,9 @@
+- alias: turn off lights late at night
+  trigger:
+    platform: time
+    at: '02:00:00'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.enterence_light
+    - service: light.turn_off
+      entity_id: light.cabinet_lights, light.hall, light.token_light_1, light.token_light_2

@@ -1,0 +1,37 @@
+---
+- hosts:
+    - pi
+  vars:
+    duck_subdomain: <your-subdomain>
+    duck_token: <your-duckdns-token> # it would be a great idea to encrypt with with ansible vault
+    certbot_hostnames: 'your-home.duckdns.org,grafana.your-home.duckdns.org'
+    certbot_pre_hook: 'systemctl stop nginx'
+    certbot_post_hook: 'systemctl restart mosquitto; systemctl start nginx'
+    domain_name: your-home.duckdns.org
+    aws_default_region: us-west-2
+    aws_credentials:
+      - name: influx-backup
+        aws_access_key_id: <your-aws-access-key-id>
+        aws_secret_access_key: <secrey> # this is another thing worth encrypting
+    influxdb_backup_aws_profile: influx-backup
+    influxdb_backup_s3_bucket: mp-influx-backups
+    homeassistant_config_dir: files
+  roles:
+    - role: mpataki.homeassistant
+      tags: homeassistant
+    - role: mpataki.ha_duckdns
+      tags: duckdns
+    - role: mpataki.ha_letsencrypt
+      tags: letsencrypt
+    - role: mpataki.ha_nginx
+      tags: nginx
+    - role: mpataki.ha_mosquitto
+      tags: mosquitto
+    - role: mpataki.ha_aws
+      tags: aws
+    - role: mpataki.ha_influxdb
+      tags: influxdb
+    - role: mpataki.ha_influxdb_backup
+      tags: influxdb_backup
+    - role: mpataki.ha_grafana
+      tags: grafana

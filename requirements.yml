@@ -1,0 +1,9 @@
+- src: mpataki.homeassistant
+- src: mpataki.ha_duckdns
+- src: mpataki.ha_letsencrypt
+- src: mpataki.ha_nginx
+- src: mpataki.ha_mosquitto
+- src: mpataki.ha_aws
+- src: mpataki.ha_influxdb
+- src: mpataki.ha_influxdb_backup
+- src: mpataki.ha_grafana
